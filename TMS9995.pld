@@ -1,0 +1,40 @@
+Name TMS9995-SBC;
+Partno ;
+Revision;
+Date 05/01/2021;
+Designer Jim Loos;
+Company ;
+Location ;
+Assembly ;
+Device G16V8A;
+
+/* Inputs:                                                  */
+Pin 2  = WE_CRUCLK; 
+Pin 3  = MEMEN;
+Pin 4  = A0;
+Pin 5  = A7;
+Pin 6  = A8;
+Pin 7  = A9;
+
+/* Outputs:                                                                     */
+Pin 19 = CRUCLK;                    /* inverted WE_CRUCLK                       */
+Pin 18 = RAMCS;                     /* RAM                                      */
+Pin 17 = ROMCS;                     /* ROM                                      */
+Pin 16 = ACCCS;                     /* Asynchronous Communications Controller   */
+Pin 15 = PSICS;                     /* Programmable System Interface            */
+
+/*  just a reminder for me (Jim)... */
+/*  ! = NOT                         */
+/*  & = AND                         */
+/*  # = OR                          */
+/*  $ = XOR                         */
+
+CRUCLK = !WE_CRUCLK;
+
+/* Memory address decoding  */
+!ROMCS = !MEMEN & !A0;                  /* ROM at 0000-7FFF    */
+!RAMCS = !MEMEN &  A0;                  /* RAM at 8000-FFFF    */
+
+/* I/O address decoding  */
+!ACCCS = MEMEN & !A7 & !A8 & !A9;       /* ACC at 0000-001F    */
+!PSICS = MEMEN & !A7 & !A8 &  A9;       /* PSI at 0020-003F    */
