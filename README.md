@@ -15,5 +15,5 @@ A simple TMS9995 single board computer based on [Stuart Conner's TMS 9995 Breadb
 <p align="center"><img src="/images/TMS 9995 SBC PSI.png"/>
 <p align="center">TMS9995 SBC PSI</p><br>
 
-<p align="center"><img src="/images/TMS 9995 SBC.png"/>
+<p align="center"><img src="/images/TMS9995 SBC.png"/>
 <p align="center">TMS9995 SBC</p><br>
